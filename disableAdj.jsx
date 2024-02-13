@@ -1,4 +1,5 @@
-var win = new Window("palette", "Toggle Solo and Adjust Layers Visibility", undefined);
+var win = new Window("palette", "Toggle Layers", undefined, {resizeable: true});
+
 var dropdown = win.add("dropdownlist", undefined, ["Video Layers", "Adjustment Layers", "Solid Layers (BROKEY)", "MP3 Audio Layers",]);
 var toggleButton = win.add("button", undefined, "Toggle Solo"); //toggle button
 toggleButton.onClick = toggleSoloAndAdjustVisibility;
@@ -6,9 +7,11 @@ var invertButton = win.add("button", undefined, "Invert"); //invert button
 var invertEnabled = false;
 invertButton.onClick = toggleInversion; 
 
-
+win.alignChildren = "fill";
 win.center();
 win.show();
+win.spacing = 0;
+
 
 function toggleSoloAndAdjustVisibility() {
     //get comp
