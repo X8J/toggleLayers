@@ -1,4 +1,11 @@
-var win = new Window("palette", "Toggle Layers", undefined, {resizeable: true});
+(function(thisObj) {
+    scriptBuildUI(thisObj)
+    function scriptBuildUI(thisObj) {
+        var win = (thisObj instanceof Panel) ? thisObj : new Window('palette', "Toggle Solo", undefined, {
+            resizeable: true
+        });
+        
+
 
 var dropdown = win.add("dropdownlist", undefined, ["Video Layers", "Adjustment Layers", "Solid Layers (BROKEY)", "MP3 Audio Layers",]);
 var toggleButton = win.add("button", undefined, "Toggle Solo"); //toggle button
@@ -7,10 +14,11 @@ var invertButton = win.add("button", undefined, "Invert"); //invert button
 var invertEnabled = false;
 invertButton.onClick = toggleInversion; 
 
+win.orientation = "column"; 
 win.alignChildren = "fill";
 win.center();
 win.show();
-win.spacing = 0;
+
 
 
 function toggleSoloAndAdjustVisibility() {
@@ -46,3 +54,8 @@ function toggleInversion() {
     //change text
     invertButton.text = invertEnabled ? "Invert (ON)" : "Invert (OFF)";
 }
+
+``
+
+    }
+})(this);
