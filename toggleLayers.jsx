@@ -55,7 +55,7 @@ function toggleInversion() {
     invertButton.text = invertEnabled ? "Invert (ON)" : "Invert (OFF)";
 }
 
-``
+
 
     }
 })(this);
