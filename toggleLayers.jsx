@@ -5,9 +5,7 @@
             resizeable: true
         });
         
-
-
-var dropdown = win.add("dropdownlist", undefined, ["Video Layers", "Adjustment Layers", "Solid Layers (BROKEY)", "MP3 Audio Layers",]);
+var dropdown = win.add("dropdownlist", undefined, ["Video Layers", "Adjustment Layers", "Solid Layers", "MP3 Audio Layers",]);
 var toggleButton = win.add("button", undefined, "Toggle Solo"); //toggle button
 toggleButton.onClick = toggleSoloAndAdjustVisibility;
 var invertButton = win.add("button", undefined, "Invert"); //invert button
@@ -32,15 +30,19 @@ function toggleSoloAndAdjustVisibility() {
             if (dropdown.selection.text === "Video Layers" && (invertEnabled ? !layer.hasVideo : layer.hasVideo)) {
                 
                 layer.solo = !layer.solo;
+
             } else if (dropdown.selection.text === "Adjustment Layers" && (invertEnabled ? !layer.adjustmentLayer : layer.adjustmentLayer)) {
                 
                 layer.solo = !layer.solo;
-            // } else if (dropdown.selection.text === "Solid Layers" && !layer.isSolid) {
-                
-            //     layer.solo = !layer.solo;
+
+            } else if (dropdown.selection.text === "Solid Layers" && (invertEnabled ? !layer.source.mainSource instanceof SolidSource : layer.source.mainSource instanceof SolidSource)){
+
+                layer.solo = !layer.solo;
+
             } else if (dropdown.selection.text === "MP3 Audio Layers" && (invertEnabled ? !layer.hasAudio : layer.hasAudio)) {
                 
                 layer.solo = !layer.solo;
+                
             }
         }
     } else {
